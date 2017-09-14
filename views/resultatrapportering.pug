@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Resultatrapportering
+  form
+    p Vallokal/Ö
+    input#vallokal.form-control(type='text', placeholder='vallokal')
+    br
+    p Fyll i antalet röster
+    input#antalroster.form-control(type='text', placeholder='Antal röster') 
+    br
+    p Parti
+    input#parti.form-control(type='text', placeholder='Parti')
+    br
+    button(type="submit") Submit
+  
