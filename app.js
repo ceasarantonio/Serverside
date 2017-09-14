@@ -16,10 +16,8 @@ app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/public'));
 app.use('/', resultat);
 app.use('/resultatrapportering', resultatrapportering);
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.get("*", function(req, res) {
+  res.render("error.pug");
 });
 
 
