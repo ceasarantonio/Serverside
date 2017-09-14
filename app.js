@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
-var http = require('http');
+var http = require('http').Server(app);
 var path = require('path');
-var server = http.Server(app);
-var io = require('socket.io')(server);
+var io = require('socket.io')(http);
+var pug = require('pug');
 
 var resultat = require('./routes/resultat');
 var resultatrapportering = require('./routes/resultatrapportering');
@@ -24,7 +24,7 @@ app.use(function(req, res, next) {
 
 
 io.on('connection', function(socket){
-    socket.on('message', function(vote){
+  socket.on('message', function(vote){
     io.emit('message', vote);
   });
 });
@@ -33,6 +33,6 @@ io.on('connection', function(socket){
 
 
 
-server.listen(3000);
+http.listen(3000);
 
 module.exports = app;

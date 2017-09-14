@@ -6,11 +6,13 @@ $(function () {
       parti: $('#parti').val(),
       roster: $('#antalroster').val()
     }
-   socket.emit('message', vote);
-  return false;
-    /*$('#parti').val('');
-    $('#roster').val('');
-    $('#lokal').val('');*/
+   votes = JSON.stringify(vote);
+   socket.emit('message', votes);
+  
+    $('#parti').val('');
+    $('#antalroster').val('');
+    $('#vallokal').val('');
+    return false;
   });
 });
 

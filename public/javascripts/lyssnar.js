@@ -1,9 +1,8 @@
 $(function () {
-var socket = io();
-socket.on('message', function(vote){
-  console.log(vote);
-      $('#votes').html("<p>" + vote.lokal);
-      /*$('#antalroster').append($('<li>').text(vote.roster));
-      $('#parti').append($('<li>').text(vote.parti));*/
+  var socket = io();
+  socket.on('message', function(vote){
+    console.log(vote);
+    voteObject = JSON.parse(vote);
+      $('#votes').append($('<li>').text( ` Vallokal: ${voteObject.lokal}, Parti: ${voteObject.parti},  Antalet röster: ${voteObject.roster}`));     
   });
 });
